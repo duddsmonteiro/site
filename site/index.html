@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <section class="landing">
+    <div class="landing-light light-a" aria-hidden="true"></div>
+    <div class="landing-light light-b" aria-hidden="true"></div>
+    <a href="#" class="landing-login" id="landingLoginBtn">Login</a>
+    <div class="landing-center">
+      <h1 class="glow-title">GLOW</h1>
+      <p class="glow-subtitle">Seu daily glow de links e inspirações.</p>
+    </div>
+  </section>
+
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span> GLOW</div>
+      <nav class="tabs" aria-label="Navegação de telas">
+        <button class="tab active" data-view="dashboard">Painel de Edição</button>
+        <button class="tab" data-view="customization">Personalização</button>
+        <button class="tab" data-view="products">Produtos</button>
+        <button class="tab" data-view="page">Página Final</button>
+        <button class="tab" data-view="login">Fluxo de Login</button>
+      </nav>
+    </div>
+
+    <section class="view active" id="dashboard"><div class="dashboard">
+      <article class="panel controls">
+        <h2 style="margin-top:0;">Editor em Tempo Real</h2>
+        <p style="margin-top:0;color:var(--muted);">Cards arrastáveis com seus links ativos. A ordem aqui define o topo da página final.</p>
+        <div class="toolbar">
+          <button class="chip link" data-open-tab="customization">Adicionar Link</button>
+          <button class="chip style" data-open-tab="customization">Estilo</button>
+          <button class="chip analytics" data-open-tab="customization">Analytics</button>
+        </div>
+        <div class="card-list" id="dragList"></div>
+      </article>
+      <article class="panel phone-wrap"><div class="phone"><div class="notch"></div><div class="avatar"><div class="avatar-inner"></div></div><h3 class="title">@criador.exemplo</h3><p class="sub">Conteúdo e negócios criativos</p><div id="dashboardPreviewLinks" style="display:grid;gap:10px;width:100%"></div></div></article>
+    </div></section>
+
+    <section class="view" id="customization"><div class="grid">
+      <article class="panel box"><h2 style="margin-top:0;">Aba de Personalização</h2><p style="margin-top:0;color:var(--muted)">Edite seus links como quiser. Tudo salva automaticamente no navegador.</p>
+        <div class="input-grid"><input class="field" id="newLinkLabel" placeholder="Nome do botão" /><input class="field" id="newLinkUrl" placeholder="https://seulink.com" /><button class="btn" id="addLinkBtn">Adicionar</button></div>
+        <label class="toggle-line"><input type="checkbox" id="toggleInstagramFeed" checked /> Mostrar feed do Instagram na página final</label>
+        <div class="editor-list" id="linkEditorList"></div>
+      </article>
+      <article class="panel box"><h3 style="margin-top:0;">Analytics para Marcas</h3><p style="margin-top:0;color:var(--muted)">Atualização automática de métricas a cada 3 dias.</p>
+        <div class="analytics-mini" id="analyticsMini"></div><div id="analyticsMeta" style="margin-top:10px;font-size:.86rem;color:#cfd8f9"></div>
+        <button class="btn" id="forceAnalyticsBtn" style="margin-top:12px;width:100%;">Forçar nova leitura de métricas</button>
+      </article>
+    </div></section>
+
+    <section class="view" id="products"><article class="panel box">
+      <h2 style="margin-top:0;">Produtos (Afiliados)</h2><p style="margin-top:0;color:var(--muted)">Anexe produtos com foto e descrição para deixar tudo em um lugar só.</p>
+      <form class="product-form" id="productForm">
+        <input class="field" id="productName" placeholder="Nome do produto" required />
+        <input class="field" id="productUrl" placeholder="https://link-afiliado.com" required />
+        <input class="field" id="productDescription" placeholder="Descrição curta do produto" required />
+        <input class="field" id="productImage" type="file" accept="image/*" />
+        <button class="btn" type="submit">Salvar</button>
+      </form>
+      <div class="product-list" id="productList"></div>
+    </article></section>
+
+    <section class="view" id="page"><article class="mobile-page">
+      <div class="premium-head"><div class="avatar-neon"><div class="avatar-inner"></div></div><h2 style="margin:0;">@creatorpro</h2><p style="margin:5px 0 0;color:#d8dcff;">Lifestyle, música e bastidores</p></div>
+      <div class="glass-link-list" id="bioLinks"></div>
+      <div class="widget" id="instagramFeedWidget"><strong>Instagram Feed</strong><div class="ig-grid"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+      <div class="widget"><strong>Produtos Recomendados</strong><div class="product-quick" id="productQuickList"></div></div>
+    </article></section>
+
+    <section class="view" id="login"><article class="login"><div class="shape a"></div><div class="shape b"></div><div class="shape c"></div><div class="login-card"><h2>Comece seu link em segundos</h2><p class="login-subtitle">Escolha seu nome de usuário e continue com sua conta favorita.</p><label class="sr-only" for="user">Escolha seu nome de usuário</label><div class="url-field" id="user" role="textbox"><span class="prefix">meulink.com/</span><span class="input-ghost">escolha seu nome de usuário</span></div><button class="oauth google"><span class="icon">G</span> Continuar com Google</button><button class="oauth tiktok"><span class="icon">♪</span> Continuar com TikTok</button><button class="oauth apple"><span class="icon">A</span> Continuar com Apple</button><button class="oauth github"><span class="icon">GH</span> Continuar com GitHub</button><div class="login-divider"><span>ou</span></div><button class="oauth email"><span class="icon">@</span> Entrar com e-mail e senha</button><div class="login-actions"><a href="#" class="login-link">Esqueci minha senha</a><a href="#" class="login-link">Criar conta</a></div><p class="login-terms">Ao continuar, você aceita os Termos e a Política de Privacidade.</p></div></article></section>
+  </div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
+
